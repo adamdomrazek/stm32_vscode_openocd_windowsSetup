@@ -18,33 +18,18 @@
             "args": ["clean"]
         },
         {
-            "label": "JFlash",
+            "label": "Flash",
             "group": "build",
             "type": "shell",
             "command": "make",
             // "command": "mingw32-make",
-            "args": ["-j4","jflash"]
+            "args": ["-j4","flash"]
         },
         {
-            "label": "STflash",
+            "label": "buildFlashClean",
             "group": "build",
             "type": "shell",
-            "command": "make",
-            // "command": "mingw32-make",
-            "args": ["-j4","stflash"]
-        },
-        {
-            "label": "UARTFlash",
-            "group": "build",
-            "type": "shell",
-            "command": "make",
-            // "command": "mingw32-make",
-
-            // Replace PORT= with your UART port
-            // Linux has ttyUSBx or ttyACMx, windows has COMx
-            // "args": ["-j4","uflash", "PORT=/dev/ttyUSB1"]
-            "args": ["-j4","uflash", "PORT=COM5"]
-
+            "command": "make all -j4 & make -j4 flash & make clean"
         }
     ]
 }

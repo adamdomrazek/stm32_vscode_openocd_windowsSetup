@@ -1,44 +1,28 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "stm32 F4",
             "includePath": [
-                "${workspaceRoot}",
-                "${workspaceRoot}/Core/Inc",
-                "${workspaceRoot}/Drivers/STM32F4xx_HAL_Driver/Inc",
-                "${workspaceRoot}/Drivers/CMSIS/Include",
-                "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
-                "/opt/gcc-arm/arm-none-eabi/include",
-                "/opt/gcc-arm/arm-none-eabi/include/c++/12.2.0",
-                "/opt/gcc-arm/lib/gcc/arm-none-eabi/12.2.0/include",
-                "/opt/gcc-arm/lib/gcc/arm-none-eabi/12.2.0/include-fixed",
-                "/opt/gcc-arm/arm-none-eabi/include/machine",
-                "/opt/gcc-arm/arm-none-eabi/include/newlib-nano",
-                "/opt/gcc-arm/arm-none-eabi/include/sys"
+                "${workspaceFolder}/**"
             ],
+
             "defines": [
+                "_DEGUG",
+                "UNICODE",
+                "_UNICODE",
+                // z Makefile C_DEFS
                 "USE_HAL_DRIVER",
-                "STM32F407xx"
+                "STM32F429xx"
             ],
-            "intelliSenseMode": "linux-gcc-x64",
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "${env:ARMGCC_DIR}/arm-none-eabi-gcc.exe",
+            // z Makefile "CFLAGS"
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb"
+            ],
             "cStandard": "c11",
-            "cppStandard": "c++20",
-            "browse": {
-                "path": [
-                    "${workspaceRoot}",
-                    "${workspaceRoot}/Core/Inc",
-                    "${workspaceRoot}/Drivers/STM32F4xx_HAL_Driver/Inc",
-                    "${workspaceRoot}/Drivers/CMSIS/Include",
-                    "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
-                    "/opt/gcc-arm/arm-none-eabi/include",
-                    "/opt/gcc-arm/arm-none-eabi/include/c++/12.2.0",
-                    "/opt/gcc-arm/lib/gcc/arm-none-eabi/12.2.0/include",
-                    "/opt/gcc-arm/lib/gcc/arm-none-eabi/12.2.0/include-fixed"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "${workspaceRoot}/.vscode/browse.vc.db"
-            },
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "cppStandard": "c++17"
         }
     ],
     "version": 4
