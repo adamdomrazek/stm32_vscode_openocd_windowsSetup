@@ -1,0 +1,23 @@
+git init
+
+git add {filename}
+
+# add remote called origin at the adress https...
+git remote add origin https://github.com/<your_username>/Demo.git
+
+git push -u origin master
+
+tworzenie repo:
+	1. folder projektu
+	2. git init
+	3. git add {filenames}
+	4. git remote add origion {www address}
+
+
+git init
+git add .
+git config user.name "adamdomrazek"
+git config user.email "czyzbyja@gmail.com"
+git commit -m "first commit"
+git remote add origin  https://github.com/adamdomrazek/stm32_vscode_openocd_windowsSetup.git
+git push -u origin master
