@@ -1,0 +1,69 @@
+tutorial:
+https://www.youtube.com/watch?v=PxQw5_7yI8Q&t=656s
+
+pliki idą do C:/tools_stm
+
+1. Generowanie projektu z cubeMX z makefile
+
+2. Download toolchain z arm
+	
+	https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain
+
+	C:\tools_stm\arm-gcc\bin
+
+3. Make for windows 
+
+	https://gnuwin32.sourceforge.net/packages/make.htm 
+	ściągnać : binaries i dependencies
+
+4. Zrobić zmienną systemową (tam gdzie zmienna PATH) 
+	ARMGCC_DIR : C:\tools_stm\arm-gcc\bin; C:\tools_stm\arm-gcc\arm-none-eabi\bin
+
+	Dodać ją do PATH : $ARMGCC_DIR$
+
+
+można przetestować czy wszystko jest okej dodane;
+	np. make -version etc.
+
+5. Dodać do Makefile
+
+	#######################################
+	# clean up
+	#######################################
+	clean:
+		-rm -fR $(BUILD_DIR)
+
+
+	#######################################
+	# openOCD
+	#######################################
+	flash: all
+		openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+
+	(skopiowany build target (sciezka) z linijki 173)
+
+lista targetów do openOCD flash
+C:\tools_stm\OpenOCD\share\openocd\scripts\target
+
+moje: stm32f4x.cfg
+
+6. przetestować 
+	make
+	make flash
+
+	no i działa 
+
+7. make clean nie z Makefile nie działa bo na windowsie nie ma komendy make
+
+	Można dodać do PATH scieżke z programami z git bash - tam jest np. rm.exe
+	XD teraz mam komendy unixowe na cmd w windowsie
+	C:\Program Files\Git\usr\bin
+
+8. Dodawanie do gita
+	git init
+	git add .
+	git config user.name "adamdomrazek"
+	git config user.email "czyzbyja@gmail.com"
+	git commit -m "first commit"
+	git remote add origin  https://github.com/adamdomrazek/stm32_vscode_openocd_windowsSetup.git
+	git push -u origin master
