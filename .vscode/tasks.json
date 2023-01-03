@@ -7,7 +7,7 @@
             "type": "shell",
             "command": "make",
             // "command": "mingw32-make",
-            "args": ["all", "-j4"]
+            "args": ["all", "-j8"]
         },
         {
             "label": "Build clean",
@@ -23,13 +23,19 @@
             "type": "shell",
             "command": "make",
             // "command": "mingw32-make",
-            "args": ["-j4","flash"]
+            "args": ["-j8","flash"]
         },
         {
             "label": "buildFlashClean",
             "group": "build",
             "type": "shell",
-            "command": "make all -j4 & make -j4 flash & make clean"
+            "command": "make all -j8 & make -j8 flash & make clean"
+        },
+        {
+            "label": "build & Flash",
+            "group": "build",
+            "type": "shell",
+            "command": "make all -j8 & make -j8 flash"
         }
     ]
 }
